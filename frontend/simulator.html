@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meteor Madness – Simulator</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Leaflet (for maps) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Three.js (for 3D orbit) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-black/60 p-4 flex justify-between items-center shadow-md">
+    <h1 class="text-2xl font-bold">🌌 Meteor Madness Simulator</h1>
+    <a href="index.html" class="text-gray-400 hover:text-gray-200">← Back</a>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="flex flex-1">
+    
+    <!-- Left Column: Visualizations -->
+    <section class="flex-1 grid grid-rows-2 gap-2 p-2">
+      <!-- Orbit Viewer -->
+      <div id="orbit-viewer" class="bg-black/40 rounded-xl shadow-md flex items-center justify-center">
+        <p class="text-gray-400">[3D Orbit Visualization will render here]</p>
+      </div>
+
+      <!-- Impact Map -->
+      <div id="impact-map" class="bg-black/40 rounded-xl shadow-md">
+        <p class="text-gray-400 text-center mt-2">[Impact Map will render here]</p>
+      </div>
+    </section>
+
+    <!-- Right Column: Controls + Results -->
+    <aside class="w-96 bg-black/60 p-4 flex flex-col gap-6 shadow-lg">
+      
+      <!-- Controls -->
+      <div id="controls" class="p-3 bg-gray-800 rounded-xl">
+        <h2 class="text-xl font-semibold mb-2">⚙️ Controls</h2>
+        <label class="block mb-2">
+          Asteroid Diameter (m)
+          <input id="diameter" type="range" min="50" max="2000" value="500" step="50" class="w-full">
+          <span id="diameter-value">500 m</span>
+        </label>
+        <label class="block mb-2">
+          Velocity (m/s)
+          <input id="velocity" type="range" min="5000" max="30000" value="12000" step="500" class="w-full">
+          <span id="velocity-value">12000 m/s</span>
+        </label>
+        <button id="simulate-btn" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-xl shadow">
+          Run Simulation
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="results-panel" class="p-3 bg-gray-800 rounded-xl">
+        <h2 class="text-xl font-semibold mb-2">📊 Results</h2>
+        <ul class="text-sm space-y-1">
+          <li>Energy: <span id="energy"></span></li>
+          <li>Crater Diameter: <span id="crater"></span></li>
+          <li>Seismic Magnitude: <span id="seismic"></span></li>
+          <li>Tsunami Height: <span id="tsunami"></span></li>
+        </ul>
+      </div>
+
+      <!-- Mitigation -->
+      <div id="mitigation-panel" class="p-3 bg-gray-800 rounded-xl">
+        <h2 class="text-xl font-semibold mb-2">🛰️ Mitigation</h2>
+        <button id="kinetic-btn" class="w-full mb-2 px-4 py-2 bg-green-600 hover:bg-green-500 rounded-xl">Kinetic Impactor</button>
+        <button id="gravity-btn" class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl">Gravity Tractor</button>
+        <p id="mitigation-result" class="text-sm text-gray-300 mt-2">[Deflection results will appear here]</p>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black/80 p-2 text-center text-gray-400 text-xs">
+    Powered by NASA NEO API & USGS Data
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="js/api.js"></script>
+  <script src="js/controls.js"></script>
+  <script src="js/resultsPanel.js"></script>
+  <script src="js/mitigation.js"></script>
+  <script src="js/orbitViewer.js"></script>
+  <script src="js/impactMap.js"></script>
+</body>
+</html>
