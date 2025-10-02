@@ -1,4 +1,5 @@
-data/
+data/SmallBOdyObjects.csv
+data/USGC.csv
 Neo/
 venv/
 __pycache__/
